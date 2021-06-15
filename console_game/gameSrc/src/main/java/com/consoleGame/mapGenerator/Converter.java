@@ -1,18 +1,13 @@
-package ex00;
+package com.consoleGame.mapGenerator;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.consoleGame.bot.Bot;
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
 
 public class Converter {
-
-
     int tmp_pos_i;
     int tmp_pos_j;
     int temp = 0;

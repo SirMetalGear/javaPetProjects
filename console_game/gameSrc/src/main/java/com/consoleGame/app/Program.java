@@ -1,13 +1,12 @@
-package ex00;
+package com.consoleGame.app;
 
-import com.beust.jcommander.JCommander;
+import com.consoleGame.mapGenerator.Converter;
+import com.consoleGame.parser.Args;
 
 import java.io.*;
-import java.util.concurrent.ExecutionException;
 
 public class Program {
     public static void main(String[] args) {
-        int i = 0;
         char  enemy_char = ' ';
         char player_char= ' ';
         char wall_char= ' ';
@@ -18,37 +17,16 @@ public class Program {
         String wall_color= " ";
         String  goal_color= " ";
         String  empty_color= " ";
-
         Converter conv;
-
         Args arges = new Args();
-
-
-
-        JCommander jc = new JCommander();
-        jc.addObject(arges);
         try {
-            jc.parse(args);
-        }
-        catch (Exception e)
-        {
-            throw new IllegalParametersException();
-        }
-
-        if (args.length != 4)
-        {
-            System.out.println("Wrong input");
-            System.exit(1);
-        }
-        try {
-            File file = new File("./src/ex00/application-production.properties");
-            //создаем объект FileReader для объекта File
-            FileReader fr = new FileReader(file);
-            //создаем BufferedReader с существующего FileReader для построчного считывания
-            BufferedReader reader = new BufferedReader(fr);
-            // считаем сначала первую строку
+            InputStream inputStream = Thread.currentThread()
+                    .getContextClassLoader()
+                    .getResourceAsStream("application-production.properties");
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader reader = new BufferedReader(inputStreamReader);
             String line;
-            while (i < 10) {
+            for (int i = 0; i < 10; i++) {
                 line = reader.readLine();
                 if (line.regionMatches(0, "enemy.char=", 0, 11))
                     enemy_char = line.charAt(11);
@@ -82,16 +60,12 @@ public class Program {
                     System.out.println("Wrong conf");
                     System.exit(1);
                 }
-                i++;
             }
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         conv = new Converter();
         conv.take_chars(enemy_char, player_char, wall_char, goal_char, empty_char);
         conv.take_parav(Integer.parseInt(arges.getEn_count()), Integer.parseInt(arges.getWalls_count()), Integer.parseInt(arges.getSizee()));
@@ -99,7 +73,6 @@ public class Program {
         conv.take_mode(arges.getProfile());
         conv.checkpatameters();
         conv.create_enemy_arr();
-
         try {
             conv.seeBMPImage();
         }

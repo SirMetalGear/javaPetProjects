@@ -1,20 +1,18 @@
-package ex00;
+package com.consoleGame.parser;
 
-import com.beust.jcommander.Parameter;
-import com.beust.jcommander.Parameters;
-
-@Parameters(separators = "=")
 public class Args {
 
-    @Parameter(names = {"--enemiesCount"})
     private String en_count;
-    @Parameter(names = {"--wallsCount"})
     private String walls_count;
-    @Parameter(names = {"--size"})
     private String size;
-    @Parameter(names = {"--profile"})
     private String profile;
 
+    public Args() {
+        en_count = "5";
+        walls_count = "50";
+        size = "30";
+        profile = "production";
+    }
 
     public void run()
     {

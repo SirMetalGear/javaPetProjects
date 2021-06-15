@@ -1,4 +1,4 @@
-package ex00;
+package com.consoleGame.bot;
 
 public class Bot {
     private char[][] charMap;
