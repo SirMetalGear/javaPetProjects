@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="preProcessorToLowerImpl" class="edu.school21.impl.PreProcessorToLowerImplImpl">-->
+    <!--</bean>-->
+
+    <!--<bean id="preProcessorToUpperImpl" class="edu.school21.impl.PreProcessorToUpperImpl">-->
+    <!--</bean>-->
+
+    <!--<bean id="rendererErrImpl" class="edu.school21.impl.RendererErrImpl">-->
+        <!--<constructor-arg ref="PreProcessorToUpperImpl"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="rendererStandartImpl" class="edu.school21.impl.RendererStandartImpl">-->
+        <!--<constructor-arg ref="PreProcessorToUpperImpl"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="PrinterWithPrefixImpl"    class="edu.school21.impl.PrinterWithPrefixImpl">-->
+        <!--<constructor-arg ref="RendererStandardImpl"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="PrinterWithDateTimeImpl"    class="edu.school21.impl.PrinterWithDateTimeImpl">-->
+        <!--<constructor-arg ref="RendererErrImpl"/>-->
+    <!--</bean>-->
+
+    <bean id="PrinterWithPrefixImpl"    class="edu.school21.impl.PrinterWithPrefixImpl">
+        <constructor-arg ref="RendererStandartImpl"/>
+    </bean>
+
+    <bean id="PrinterWithDateTimeImpl"    class="edu.school21.impl.PrinterWithDateTimeImpl">
+        <constructor-arg ref="RendererErrImpl"/>
+    </bean>
+
+
+
+    <bean id="RendererErrImpl"  class="edu.school21.impl.RendererErrImpl">
+        <constructor-arg ref="PreProcessorToUpperImpl"/>
+    </bean>
+
+    <bean id="RendererStandartImpl"  class="edu.school21.impl.RendererStandartImpl">
+        <constructor-arg ref="PreProcessorToLowerImpl"/>
+    </bean>
+
+
+    <bean id="PreProcessorToUpperImpl"    class="edu.school21.impl.PreProcessorToUpperImpl">
+
+    </bean>
+
+    <bean id="PreProcessorToLowerImpl"    class="edu.school21.impl.PreProcessorToLowerImpl">
+
+    </bean>
+
+
+</beans>
